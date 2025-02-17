@@ -1,0 +1,511 @@
+Analysis & Synthesis report for Pratica10
+Tue Feb 11 18:29:01 2025
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Pratica10|PixelGen:px_gen|Paddle:paddle|DirectionController:comb_533|state_reg
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Port Connectivity Checks: "PixelGen:px_gen|Ball:ball"
+ 15. Port Connectivity Checks: "PixelGen:px_gen|Paddle:paddle|DirectionController:comb_533"
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Feb 11 18:29:01 2025       ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                      ; Pratica10                                   ;
+; Top-level Entity Name              ; Pratica10                                   ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 380                                         ;
+;     Total combinational functions  ; 367                                         ;
+;     Dedicated logic registers      ; 95                                          ;
+; Total registers                    ; 95                                          ;
+; Total pins                         ; 27                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; Pratica10          ; Pratica10          ;
+; Family name                                                      ; MAX 10 FPGA        ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                            ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
+; VGASync.v                        ; yes             ; User Verilog HDL File        ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/VGASync.v                ;         ;
+; Pratica10.v                      ; yes             ; User Verilog HDL File        ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v              ;         ;
+; PixelGen.v                       ; yes             ; User Verilog HDL File        ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/PixelGen.v               ;         ;
+; EdgeDetector.v                   ; yes             ; User Verilog HDL File        ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/EdgeDetector.v           ;         ;
+; DirectionController.v            ; yes             ; User Verilog HDL File        ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/DirectionController.v    ;         ;
+; AsyncInputSynchronizer.v         ; yes             ; User Verilog HDL File        ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/AsyncInputSynchronizer.v ;         ;
+; Ball.v                           ; yes             ; User Verilog HDL File        ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v                   ;         ;
+; Wall.v                           ; yes             ; User Verilog HDL File        ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v                   ;         ;
+; paddle.v                         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v                 ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                       ;
++---------------------------------------------+---------------------+
+; Resource                                    ; Usage               ;
++---------------------------------------------+---------------------+
+; Estimated Total logic elements              ; 380                 ;
+;                                             ;                     ;
+; Total combinational functions               ; 367                 ;
+; Logic element usage by number of LUT inputs ;                     ;
+;     -- 4 input functions                    ; 126                 ;
+;     -- 3 input functions                    ; 77                  ;
+;     -- <=2 input functions                  ; 164                 ;
+;                                             ;                     ;
+; Logic elements by mode                      ;                     ;
+;     -- normal mode                          ; 194                 ;
+;     -- arithmetic mode                      ; 173                 ;
+;                                             ;                     ;
+; Total registers                             ; 95                  ;
+;     -- Dedicated logic registers            ; 95                  ;
+;     -- I/O registers                        ; 0                   ;
+;                                             ;                     ;
+; I/O pins                                    ; 27                  ;
+;                                             ;                     ;
+; Embedded Multiplier 9-bit elements          ; 0                   ;
+;                                             ;                     ;
+; Maximum fan-out node                        ; MAX10_CLK1_50~input ;
+; Maximum fan-out                             ; 95                  ;
+; Total fan-out                               ; 1416                ;
+; Average fan-out                             ; 2.74                ;
++---------------------------------------------+---------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                          ;
++-----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------+------------------------+--------------+
+; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                   ; Entity Name            ; Library Name ;
++-----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------+------------------------+--------------+
+; |Pratica10                              ; 367 (0)             ; 95 (12)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 27   ; 0            ; 0          ; |Pratica10                                                            ; Pratica10              ; work         ;
+;    |AsyncInputSynchronizer:comb_5|      ; 0 (0)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|AsyncInputSynchronizer:comb_5                              ; AsyncInputSynchronizer ; work         ;
+;    |EdgeDetector:left_key|              ; 2 (2)               ; 3 (3)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|EdgeDetector:left_key                                      ; EdgeDetector           ; work         ;
+;    |EdgeDetector:right_key|             ; 2 (2)               ; 3 (3)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|EdgeDetector:right_key                                     ; EdgeDetector           ; work         ;
+;    |PixelGen:px_gen|                    ; 322 (10)            ; 52 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|PixelGen:px_gen                                            ; PixelGen               ; work         ;
+;       |Ball:ball|                       ; 86 (86)             ; 18 (18)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|PixelGen:px_gen|Ball:ball                                  ; Ball                   ; work         ;
+;       |Paddle:paddle|                   ; 221 (217)           ; 34 (31)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|PixelGen:px_gen|Paddle:paddle                              ; Paddle                 ; work         ;
+;          |DirectionController:comb_533| ; 4 (4)               ; 3 (3)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|PixelGen:px_gen|Paddle:paddle|DirectionController:comb_533 ; DirectionController    ; work         ;
+;       |Wall:wall|                       ; 5 (5)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|PixelGen:px_gen|Wall:wall                                  ; Wall                   ; work         ;
+;    |VGASync:vsync_unit|                 ; 41 (41)             ; 23 (23)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Pratica10|VGASync:vsync_unit                                         ; VGASync                ; work         ;
++-----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------+------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------+
+; State Machine - |Pratica10|PixelGen:px_gen|Paddle:paddle|DirectionController:comb_533|state_reg ;
++-------------+-------------+-------------+-------------------------------------------------------+
+; Name        ; state_reg.F ; state_reg.T ; state_reg.B                                           ;
++-------------+-------------+-------------+-------------------------------------------------------+
+; state_reg.F ; 0           ; 0           ; 0                                                     ;
+; state_reg.B ; 1           ; 0           ; 1                                                     ;
+; state_reg.T ; 1           ; 1           ; 0                                                     ;
++-------------+-------------+-------------+-------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                     ;
++------------------------------------------+---------------------------------------------+
+; Register name                            ; Reason for Removal                          ;
++------------------------------------------+---------------------------------------------+
+; PixelGen:px_gen|Ball:ball|vx[2..9]       ; Stuck at GND due to stuck port data_in      ;
+; PixelGen:px_gen|Ball:ball|vx[1]          ; Stuck at VCC due to stuck port data_in      ;
+; PixelGen:px_gen|Ball:ball|vx[0]          ; Stuck at GND due to stuck port data_in      ;
+; PixelGen:px_gen|Ball:ball|x[0]           ; Stuck at GND due to stuck port data_in      ;
+; PixelGen:px_gen|Paddle:paddle|y_count[0] ; Stuck at GND due to stuck port data_in      ;
+; PixelGen:px_gen|Ball:ball|vy[1]          ; Stuck at VCC due to stuck port data_in      ;
+; PixelGen:px_gen|Ball:ball|vy[0]          ; Stuck at GND due to stuck port data_in      ;
+; PixelGen:px_gen|Ball:ball|y[0]           ; Stuck at GND due to stuck port data_in      ;
+; PixelGen:px_gen|Ball:ball|x[1]           ; Merged with PixelGen:px_gen|Ball:ball|y[1]  ;
+; PixelGen:px_gen|Ball:ball|vy[2..8]       ; Merged with PixelGen:px_gen|Ball:ball|vy[9] ;
+; Total Number of Removed Registers = 23   ;                                             ;
++------------------------------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                   ;
++---------------------------------+---------------------------+-----------------------------------------------------------------+
+; Register name                   ; Reason for Removal        ; Registers Removed due to This Register                          ;
++---------------------------------+---------------------------+-----------------------------------------------------------------+
+; PixelGen:px_gen|Ball:ball|vy[1] ; Stuck at VCC              ; PixelGen:px_gen|Ball:ball|vy[0], PixelGen:px_gen|Ball:ball|y[0] ;
+;                                 ; due to stuck port data_in ;                                                                 ;
++---------------------------------+---------------------------+-----------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 95    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 83    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 51    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------+
+; Inverted Register Statistics                       ;
++------------------------------------------+---------+
+; Inverted Register                        ; Fan out ;
++------------------------------------------+---------+
+; PixelGen:px_gen|Ball:ball|y[7]           ; 4       ;
+; PixelGen:px_gen|Ball:ball|y[6]           ; 5       ;
+; PixelGen:px_gen|Ball:ball|y[5]           ; 5       ;
+; PixelGen:px_gen|Ball:ball|y[4]           ; 5       ;
+; PixelGen:px_gen|Ball:ball|x[8]           ; 4       ;
+; PixelGen:px_gen|Ball:ball|x[6]           ; 4       ;
+; PixelGen:px_gen|Paddle:paddle|y_count[7] ; 7       ;
+; PixelGen:px_gen|Paddle:paddle|y_count[5] ; 7       ;
+; PixelGen:px_gen|Paddle:paddle|y_count[4] ; 7       ;
+; PixelGen:px_gen|Paddle:paddle|y_count[3] ; 7       ;
+; PixelGen:px_gen|Paddle:paddle|y_count[2] ; 6       ;
+; PixelGen:px_gen|Paddle:paddle|y_count[1] ; 6       ;
+; Total number of inverted registers = 12  ;         ;
++------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |Pratica10|PixelGen:px_gen|Ball:ball|vy[6]           ;
+; 5:1                ; 25 bits   ; 75 LEs        ; 50 LEs               ; 25 LEs                 ; Yes        ; |Pratica10|PixelGen:px_gen|Paddle:paddle|y_count[27] ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Pratica10|PixelGen:px_gen|Paddle:paddle|y_count[2]  ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Pratica10|PixelGen:px_gen|r[0]                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PixelGen:px_gen|Ball:ball"                                                                                                                       ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                      ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; paddle_x ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; paddle_y ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; x        ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; y        ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PixelGen:px_gen|Paddle:paddle|DirectionController:comb_533"                                   ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; data_out[1..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 27                          ;
+; cycloneiii_ff         ; 95                          ;
+;     CLR               ; 43                          ;
+;     CLR SLD           ; 1                           ;
+;     ENA               ; 12                          ;
+;     ENA CLR           ; 39                          ;
+; cycloneiii_lcell_comb ; 367                         ;
+;     arith             ; 173                         ;
+;         2 data inputs ; 133                         ;
+;         3 data inputs ; 40                          ;
+;     normal            ; 194                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 20                          ;
+;         3 data inputs ; 37                          ;
+;         4 data inputs ; 126                         ;
+;                       ;                             ;
+; Max LUT depth         ; 12.10                       ;
+; Average LUT depth     ; 6.21                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Tue Feb 11 18:28:43 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Pratica10 -c Pratica10
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file vgasync.v
+    Info (12023): Found entity 1: VGASync File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/VGASync.v Line: 1
+Warning (12019): Can't analyze file -- file Square.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file pratica10.v
+    Info (12023): Found entity 1: Pratica10 File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file pixelgen.v
+    Info (12023): Found entity 1: PixelGen File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/PixelGen.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file edgedetector.v
+    Info (12023): Found entity 1: EdgeDetector File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/EdgeDetector.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file directioncontroller.v
+    Info (12023): Found entity 1: DirectionController File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/DirectionController.v Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file asyncinputsynchronizer.v
+    Info (12023): Found entity 1: AsyncInputSynchronizer File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/AsyncInputSynchronizer.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ball.v
+    Info (12023): Found entity 1: Ball File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file wall.v
+    Info (12023): Found entity 1: Wall File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 1
+Critical Warning (10846): Verilog HDL Instantiation warning at Pratica10.v(36): instance has no name File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 36
+Info (12127): Elaborating entity "Pratica10" for the top level hierarchy
+Info (12128): Elaborating entity "AsyncInputSynchronizer" for hierarchy "AsyncInputSynchronizer:comb_5" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 36
+Info (12128): Elaborating entity "EdgeDetector" for hierarchy "EdgeDetector:right_key" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 41
+Info (12128): Elaborating entity "VGASync" for hierarchy "VGASync:vsync_unit" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 56
+Warning (10230): Verilog HDL assignment warning at VGASync.v(68): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/VGASync.v Line: 68
+Warning (10230): Verilog HDL assignment warning at VGASync.v(78): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/VGASync.v Line: 78
+Info (12128): Elaborating entity "PixelGen" for hierarchy "PixelGen:px_gen" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 68
+Info (12128): Elaborating entity "Wall" for hierarchy "PixelGen:px_gen|Wall:wall" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/PixelGen.v Line: 27
+Warning (10240): Verilog HDL Always Construct warning at Wall.v(18): inferring latch(es) for variable "wall_rgb", which holds its previous value in one or more paths through the always construct File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 18
+Info (10041): Inferred latch for "wall_rgb[0]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[1]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[2]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[3]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[4]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[5]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[6]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[7]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[8]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[9]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[10]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Info (10041): Inferred latch for "wall_rgb[11]" at Wall.v(27) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Wall.v Line: 27
+Warning (12125): Using design file paddle.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: Paddle File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 1
+Critical Warning (10846): Verilog HDL Instantiation warning at paddle.v(76): instance has no name File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 76
+Info (12128): Elaborating entity "Paddle" for hierarchy "PixelGen:px_gen|Paddle:paddle" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/PixelGen.v Line: 41
+Warning (10240): Verilog HDL Always Construct warning at paddle.v(32): inferring latch(es) for variable "x_count", which holds its previous value in one or more paths through the always construct File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[0]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[1]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[2]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[3]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[4]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[5]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[6]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[7]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[8]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[9]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[10]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[11]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[12]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[13]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[14]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[15]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[16]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[17]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[18]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[19]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[20]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[21]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[22]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[23]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[24]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[25]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[26]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[27]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[28]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[29]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[30]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (10041): Inferred latch for "x_count[31]" at paddle.v(32) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 32
+Info (12128): Elaborating entity "DirectionController" for hierarchy "PixelGen:px_gen|Paddle:paddle|DirectionController:comb_533" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 76
+Info (12128): Elaborating entity "Ball" for hierarchy "PixelGen:px_gen|Ball:ball" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/PixelGen.v Line: 54
+Warning (10230): Verilog HDL assignment warning at Ball.v(29): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 29
+Warning (10230): Verilog HDL assignment warning at Ball.v(30): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 30
+Warning (10230): Verilog HDL assignment warning at Ball.v(31): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 31
+Warning (10230): Verilog HDL assignment warning at Ball.v(32): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 32
+Warning (10230): Verilog HDL assignment warning at Ball.v(38): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 38
+Warning (10230): Verilog HDL assignment warning at Ball.v(42): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 42
+Warning (10230): Verilog HDL assignment warning at Ball.v(46): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 46
+Warning (10230): Verilog HDL assignment warning at Ball.v(59): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 59
+Warning (10230): Verilog HDL assignment warning at Ball.v(61): truncated value with size 32 to match size of target (10) File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Ball.v Line: 61
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13000): Registers with preset signals will power-up high File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/paddle.v Line: 43
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 9 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/guilherme.maia.AD/Desktop/ProjetoPong/Pratica10.v Line: 15
+Info (21057): Implemented 410 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 383 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 29 warnings
+    Info: Peak virtual memory: 671 megabytes
+    Info: Processing ended: Tue Feb 11 18:29:01 2025
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:39
+
+

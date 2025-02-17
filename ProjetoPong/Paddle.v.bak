@@ -1,0 +1,59 @@
+module Paddle (
+    input wire clk, rstn, 
+    input wire refr_tick,
+    input wire turn_r, turn_l,
+    input wire [9:0] x, y,
+    output wire [11:0] paddle_rgb,
+    output wire paddle_on
+);
+    // x, y coordinates (0,0) to (639,479)
+    localparam MAX_X = 640;
+    localparam MAX_Y = 480;
+    
+    // paddle attributes
+    localparam PADDLE_WIDTH = 100;   // Largura da barra
+    localparam PADDLE_HEIGHT = 10;   // Altura da barra
+    localparam PADDLE_X = 290;      // Posição inicial X
+    localparam PADDLE_Y = 450;      // Posição inicial Y
+    localparam PADDLE_COLOR = 12'h5AF;
+    localparam PADDLE_STEP = 2;     // Quantos pixels a barra move a cada atualização
+    
+    integer x_count;
+    integer y_count;
+    
+    wire x_updown, x_en, y_updown, y_en;
+    
+    assign paddle_rgb = PADDLE_COLOR;
+    assign paddle_on = (x_count < x) && (x < x_count + PADDLE_WIDTH) && (y_count < y) && (y < y_count + PADDLE_HEIGHT);
+    
+    // Control for x counter (limitação horizontal)
+    always @(posedge clk, negedge rstn)
+    begin
+        if(rstn == 0)
+            x_count <= PADDLE_X;
+        else if(x_en == 1 && refr_tick == 1'b1)
+            if(x_updown == 1) // Moving to the right
+                x_count <= (x_count < MAX_X - PADDLE_WIDTH - PADDLE_STEP) ? x_count + PADDLE_STEP : MAX_X - PADDLE_WIDTH; // Limite à direita
+            else if(x_updown == 0) // Moving to the left
+                x_count <= (x_count > PADDLE_STEP) ? x_count - PADDLE_STEP : 0; // Limite à esquerda
+    end
+    
+    // Control for y counter (sem limite vertical)
+    always @(posedge clk, negedge rstn)
+    begin
+        if(rstn == 0)
+            y_count <= PADDLE_Y; // Posição inicial Y
+        else if(y_en == 1 && refr_tick == 1'b1)
+            if(y_updown == 1) // Moving down
+                y_count <= y_count + PADDLE_STEP; // Não há limite para movimento para baixo
+            else if(y_updown == 0) // Moving up
+                y_count <= y_count - PADDLE_STEP; // Não há limite para movimento para cima
+    end
+    
+    // state machine to control the direction of motion
+    DirectionController (.clk(clk), 
+                         .rstn(rstn), 
+                         .turn_right(turn_r), 
+                         .turn_left(turn_l), 
+                         .data_out({y_updown,y_en,x_updown,x_en}));
+endmodule

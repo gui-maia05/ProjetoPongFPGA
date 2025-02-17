@@ -1,0 +1,55 @@
+module Ball (
+    input wire clk, rstn, refr_tick,
+    input wire [9:0] paddle_x, paddle_y, // Posição do paddle
+    output wire [11:0] ball_rgb,
+    output wire ball_on
+);
+    // x, y coordinates (0,0) to (639,479)
+    localparam MAX_X = 640;
+    localparam MAX_Y = 480;
+    
+    // ball attributes
+    localparam BALL_SIZE = 10;
+    localparam BALL_COLOR = 12'hF00; // Cor da bola (vermelha)
+    localparam BALL_SPEED = 2;
+    
+    integer ball_x_count;
+    integer ball_y_count;
+    integer ball_x_speed;
+    integer ball_y_speed;
+    
+    assign ball_rgb = BALL_COLOR;
+    assign ball_on = (ball_x_count < paddle_x) && (paddle_x < ball_x_count + BALL_SIZE) && 
+                     (ball_y_count < paddle_y) && (paddle_y < ball_y_count + BALL_SIZE);
+    
+    // Ball movement
+    always @(posedge clk, negedge rstn)
+    begin
+        if(rstn == 0)
+        begin
+            ball_x_count <= MAX_X / 2 - BALL_SIZE / 2;  // Inicia a bola no centro
+            ball_y_count <= MAX_Y / 2 - BALL_SIZE / 2;
+            ball_x_speed <= BALL_SPEED;
+            ball_y_speed <= BALL_SPEED;
+        end
+        else if(refr_tick == 1'b1)
+        begin
+            // Controla o movimento da bola
+            ball_x_count <= ball_x_count + ball_x_speed;
+            ball_y_count <= ball_y_count + ball_y_speed;
+            
+            // Colisão com as bordas laterais (esquerda e direita)
+            if(ball_x_count <= 0 || ball_x_count >= MAX_X - BALL_SIZE)
+                ball_x_speed <= -ball_x_speed; // Inverte a direção horizontal
+            
+            // Colisão com a borda superior
+            if(ball_y_count <= 0)
+                ball_y_speed <= -ball_y_speed; // Inverte a direção vertical (para baixo)
+
+            // Colisão com o paddle
+            if((ball_x_count + BALL_SIZE >= paddle_x) && (ball_x_count <= paddle_x + 100) &&
+               (ball_y_count + BALL_SIZE >= paddle_y) && (ball_y_count <= paddle_y + 10))
+                ball_y_speed <= -ball_y_speed; // A bola bate no paddle e inverte a direção vertical
+        end
+    end
+endmodule

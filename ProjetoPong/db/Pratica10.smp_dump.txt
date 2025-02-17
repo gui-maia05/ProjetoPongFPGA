@@ -1,0 +1,6 @@
+
+State Machine - |Pratica10|PixelGen:px_gen|Paddle:paddle|DirectionController:comb_533|state_reg
+Name state_reg.F state_reg.T state_reg.B 
+state_reg.F 0 0 0 
+state_reg.B 1 0 1 
+state_reg.T 1 1 0 
